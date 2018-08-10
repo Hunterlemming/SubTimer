@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class userInput {
     
-    public static Scanner user = new Scanner(System.in);
+    private static final Scanner user = new Scanner(System.in);
     
     public static int nextInt(){
         String text = user.nextLine();
@@ -13,6 +13,10 @@ public class userInput {
                 text = user.nextLine();
             }
         return Integer.parseInt(text);
+    }
+    
+    public static String nextLine(){
+        return user.nextLine();
     }
     
 }

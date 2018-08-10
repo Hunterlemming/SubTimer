@@ -2,13 +2,13 @@ package subtimer;
 
 public class Menu {
     
-    public void showFormatOptions(){
+    public static void showFormatOptions(){
         System.out.println("-------------------------------------");
         System.out.println("Choose an option from the ones below!");
         System.out.println("1. .srt");
     }
     
-    public void execute(int procedure){
+    public static void chooseFormat(int procedure){
         switch(procedure){
             case 1:
                 SrtTimer.start();
