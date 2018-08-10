@@ -9,7 +9,7 @@ public class userInput {
     public static int nextInt(){
         String text = user.nextLine();
         while ( !text.matches("[0-9]+") ) {
-                System.out.println("Please enter a number!");
+                System.out.println("Please enter a valid number!");
                 text = user.nextLine();
             }
         return Integer.parseInt(text);
