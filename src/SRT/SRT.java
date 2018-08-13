@@ -80,12 +80,10 @@ public class SRT {
         return id;
     }
     
-    protected LocalTime getStartTime() {
-        return startTime;
-    }
-    
-    protected LocalTime getEndTime() {
-        return endTime;
+    protected String getTime() {
+        String time=startTime.getHour() + ":" + startTime.getMinute() + ":" + startTime.getSecond() + "," + startTime.getNano() 
+                + " --> " + endTime.getHour() + ":" + endTime.getMinute() + ":" + endTime.getSecond() + "," + endTime.getNano();
+        return time;
     }
     
     protected ArrayList<String> getRows() {

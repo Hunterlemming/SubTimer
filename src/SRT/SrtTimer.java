@@ -2,6 +2,7 @@ package SRT;
 
 import java.util.Scanner;
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import subtimer.userInput;
 
@@ -14,7 +15,7 @@ public class SrtTimer{
         SrtTimer timer = new SrtTimer();
         timer.load();
         timer.modify();
-        
+        timer.save();
     }
     
     private void load(){
@@ -35,9 +36,10 @@ public class SrtTimer{
                     }while (!row.equals(""));
                     content.add(temp);
                 }
+                sc.close();
             }catch (Exception e){
                 System.out.println("-------------------------------------");
-                System.out.println("Error occured while handling the file!");
+                System.out.println("Error occured while loading the file!");
             }
         } else {
             System.out.println("-------------------------------------");
@@ -61,7 +63,22 @@ public class SrtTimer{
     }
     
     private void save(){
-        
+        try{
+            PrintWriter writer = new PrintWriter(file.getName(), "UTF-8");
+            for (int i=0; i<content.size(); i++){
+                writer.println(content.get(i).getId());
+                writer.println(content.get(i).getTime());
+                for (int j=0; j<content.get(i).getRows().size(); j++){
+                    writer.println(content.get(i).getRows().get(i));
+                }
+            }
+            System.out.println("-------------------------------------");
+            System.out.println("Your new .srt is ready!");
+            writer.close();
+        } catch (Exception e){
+            System.out.println("-------------------------------------");
+            System.out.println("Error occured while saving the file!");
+        }
     }
     
 }
