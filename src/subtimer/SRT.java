@@ -40,7 +40,6 @@ public class SRT {
         System.out.println("-------------------------------------");
         System.out.println("How much do you wish to modify the existing time by? (hh:mm:ss:nn)");
         String modTime=userInput.nextLine();
-        System.out.println("-------------------------------------");
         
         int hour=Integer.parseInt(modTime.split(":")[0]);
         int min=Integer.parseInt(modTime.split(":")[1]);
@@ -73,7 +72,6 @@ public class SRT {
             default:
                 break;
         }
-        System.out.println("-------------------------------------");
         
     }
     

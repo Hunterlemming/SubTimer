@@ -6,7 +6,6 @@ public class Menu {
         System.out.println("-------------------------------------");
         System.out.println("Choose a file format from the ones below!");
         System.out.println("1. .srt");
-        System.out.println("-------------------------------------");
     }
     
     public static void chooseFormat(int procedure){

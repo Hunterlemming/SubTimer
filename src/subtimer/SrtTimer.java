@@ -20,7 +20,6 @@ public class SrtTimer extends SRT{
         System.out.println("-------------------------------------");
         System.out.println("Enter the file name! (with extension)");
         file = new File(userInput.nextLine());
-        System.out.println("-------------------------------------");
         if (file.exists() && !file.isDirectory()){
             try{
                 Scanner sc = new Scanner(file);
@@ -39,12 +38,10 @@ public class SrtTimer extends SRT{
             }catch (Exception e){
                 System.out.println("-------------------------------------");
                 System.out.println("Error occured while handling the file!");
-                System.out.println("-------------------------------------");
             }
         } else {
             System.out.println("-------------------------------------");
             System.out.println("File not found.");
-            System.out.println("-------------------------------------");
         }
         
     }
@@ -53,12 +50,10 @@ public class SrtTimer extends SRT{
         System.out.println("-------------------------------------");
         System.out.println("From which ID should the program modify?");
         int startID = userInput.nextInt()-1;
-        System.out.println("-------------------------------------");
         
         System.out.println("-------------------------------------");
         System.out.println("Which is the last ID the program to modify? (last: " + content.size() + ")");
         int endID = userInput.nextInt()-1;
-        System.out.println("-------------------------------------");
         
         for (int i=startID; i<endID; i++) {
             content.get(i).modifyTime();
