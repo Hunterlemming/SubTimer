@@ -1,5 +1,7 @@
 package subtimer;
 
+import SRT.SrtTimer;
+
 public class Menu {
     
     public static void showFormatOptions(){
@@ -11,7 +13,7 @@ public class Menu {
     public static void chooseFormat(int procedure){
         switch(procedure){
             case 1:
-                SrtTimer.start();
+                SrtTimer.run();
                 break;
             default:
                 System.out.println("Number \"" + procedure + "\" does not refer to a procedure!");

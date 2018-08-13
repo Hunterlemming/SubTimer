@@ -1,16 +1,17 @@
-package subtimer;
+package SRT;
 
 import java.util.ArrayList;
 import java.time.LocalTime;
+import subtimer.userInput;
 
 public class SRT {
     
-    private int id;
+    private final int id;
     private LocalTime startTime;
     private LocalTime endTime;
     private ArrayList<String> rows;
     
-    public void makeSRT(int _id, String _duration){
+    protected SRT(int _id, String _duration){
         id=_id;
         setStartTime(_duration.split(" --> ")[0]);
         setEndTime(_duration.split(" --> ")[1]);
@@ -32,7 +33,7 @@ public class SRT {
         endTime=LocalTime.of(hour, min, sec, nanSec);
     }
     
-    public void addRow(String _row){
+    protected void addRow(String _row){
         getRows().add(_row);
     }
     
@@ -75,19 +76,19 @@ public class SRT {
         
     }
     
-    public int getId() {
+    protected int getId() {
         return id;
     }
     
-    public LocalTime getStartTime() {
+    protected LocalTime getStartTime() {
         return startTime;
     }
     
-    public LocalTime getEndTime() {
+    protected LocalTime getEndTime() {
         return endTime;
     }
     
-    public ArrayList<String> getRows() {
+    protected ArrayList<String> getRows() {
         return rows;
     }
     

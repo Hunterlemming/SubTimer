@@ -1,15 +1,16 @@
-package subtimer;
+package SRT;
 
 import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
+import subtimer.userInput;
 
-public class SrtTimer extends SRT{
+public class SrtTimer{
     
     private File file;
     private ArrayList<SRT> content;
     
-    public static void start(){
+    public static void run(){
         SrtTimer timer = new SrtTimer();
         timer.load();
         timer.modify();
@@ -26,8 +27,7 @@ public class SrtTimer extends SRT{
                 while(sc.hasNextLine()){
                     int id = Integer.parseInt(sc.nextLine());
                     String duration= sc.nextLine();
-                    SRT temp = new SRT();
-                    temp.makeSRT(id, duration);
+                    SRT temp = new SRT(id, duration);
                     String row;
                     do{
                         row=sc.nextLine();
