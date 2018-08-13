@@ -1,6 +1,6 @@
 package subtimer;
 
-import SRT.SrtTimer;
+import srt.SrtTimer;
 
 public class Menu {
     
