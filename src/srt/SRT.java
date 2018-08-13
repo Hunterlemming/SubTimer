@@ -9,7 +9,7 @@ public class SRT {
     private final int id;
     private LocalTime startTime;
     private LocalTime endTime;
-    private ArrayList<String> rows;
+    private ArrayList<String> rows = new ArrayList();
     
     protected SRT(int _id, String _duration){
         id=_id;
@@ -34,22 +34,17 @@ public class SRT {
     }
     
     protected void addRow(String _row){
-        getRows().add(_row);
+        rows.add(_row);
     }
     
-    protected void modifyTime(){
-        System.out.println("-------------------------------------");
-        System.out.println("How much do you wish to modify the existing time by? (hh:mm:ss:nn)");
-        String modTime=userInput.nextLine();
+    protected void modifyTime(String modTime, String direction){
         
         int hour=Integer.parseInt(modTime.split(":")[0]);
         int min=Integer.parseInt(modTime.split(":")[1]);
         int sec=Integer.parseInt(modTime.split(":")[2]);
-        int nanSec=Integer.parseInt(modTime.split(":")[3]); 
+        int nanSec=Integer.parseInt(modTime.split(":")[3]);
         
-        System.out.println("-------------------------------------");
-        System.out.println("Would you like to add or substract this amount? (+/-)");
-        switch(userInput.nextLine()){
+        switch(direction){
             case "+":
                 startTime.plusHours(hour);
                 startTime.plusMinutes(min);

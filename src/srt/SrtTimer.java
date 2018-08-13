@@ -15,7 +15,7 @@ public class SrtTimer {
         SrtTimer timer = new SrtTimer();
         if (timer.load()) {
             timer.modify();
-            //timer.save();
+            timer.save();
         }
     }
 
@@ -23,14 +23,15 @@ public class SrtTimer {
         boolean successfulLoad = false;
         System.out.println("-------------------------------------");
         System.out.println("Enter the file name! (with extension)");
-        file = new File(userInput.nextLine());
+        file = new File("src/resources/" + userInput.nextLine());
         if (file.exists() && !file.isDirectory()){
             try{
+                SRT temp;
                 Scanner sc = new Scanner(file);
                 while(sc.hasNextLine()){
                     int id = Integer.parseInt(sc.nextLine());
                     String duration= sc.nextLine();
-                    SRT temp = new SRT(id, duration);
+                    temp = new SRT(id, duration);
                     String row;
                     do{
                         row=sc.nextLine();
@@ -38,10 +39,11 @@ public class SrtTimer {
                     }while (!row.equals(""));
                     content.add(temp);
                 }
+                successfulLoad = true;
                 sc.close();
             }catch (Exception e){
                 System.out.println("-------------------------------------");
-                System.out.println("Error occured while loading the file!");
+                System.out.println(e.toString());
             }
         } else {
             System.out.println("-------------------------------------");
@@ -57,10 +59,18 @@ public class SrtTimer {
 
         System.out.println("-------------------------------------");
         System.out.println("Which is the last ID the program to modify? (last: " + content.size() + ")");
-        int endID = userInput.nextInt() - 1;
+        int endID = userInput.nextInt();
+        
+        System.out.println("-------------------------------------");
+        System.out.println("How much do you wish to modify the existing time by? (hh:mm:ss:nn)");
+        String modTime=userInput.nextLine();
+        
+        System.out.println("-------------------------------------");
+        System.out.println("Would you like to add or substract this amount? (+/-)");
+        String direction=userInput.nextLine();
 
         for (int i = startID; i < endID; i++) {
-            content.get(i).modifyTime();
+            content.get(i).modifyTime(modTime,direction);
         }
     }
 
@@ -71,7 +81,7 @@ public class SrtTimer {
                 writer.println(content.get(i).getId());
                 writer.println(content.get(i).getTime());
                 for (int j = 0; j < content.get(i).getRows().size(); j++) {
-                    writer.println(content.get(i).getRows().get(i));
+                    writer.println(content.get(i).getRows().get(j));
                 }
             }
             System.out.println("-------------------------------------");
@@ -79,7 +89,7 @@ public class SrtTimer {
             writer.close();
         } catch (Exception e) {
             System.out.println("-------------------------------------");
-            System.out.println("Error occured while saving the file!");
+            System.out.println(e.toString());
         }
     }
 
