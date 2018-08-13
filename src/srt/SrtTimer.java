@@ -23,7 +23,7 @@ public class SrtTimer {
         boolean successfulLoad = false;
         System.out.println("-------------------------------------");
         System.out.println("Enter the file name! (with extension)");
-        file = new File("src/resources/" + userInput.nextLine());
+        file = new File("src/input/" + userInput.nextLine());
         if (file.exists() && !file.isDirectory()){
             try{
                 SRT temp;
@@ -68,15 +68,16 @@ public class SrtTimer {
         System.out.println("-------------------------------------");
         System.out.println("Would you like to add or substract this amount? (+/-)");
         String direction=userInput.nextLine();
-
+        
         for (int i = startID; i < endID; i++) {
             content.get(i).modifyTime(modTime,direction);
         }
+        
     }
 
     private void save() {
         try {
-            PrintWriter writer = new PrintWriter(file.getName(), "UTF-8");
+            PrintWriter writer = new PrintWriter("src/output/" + file.getName(), "UTF-8");
             for (int i = 0; i < content.size(); i++) {
                 writer.println(content.get(i).getId());
                 writer.println(content.get(i).getTime());
